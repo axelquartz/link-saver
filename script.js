@@ -10,12 +10,16 @@ function pushLink() {
 
     //Display the link
     displayLink()
+
+    //input to empty
+    inputEl.value = ''
 }
 
 function displayLink() {
     let linkToDisplay = '';
     for (i=0 ; i<userLinks.length ; i++) {
-        
+
+        //assign list HTML element to variable
         linkToDisplay += `<li><a href='${userLinks[i]}' target='_blank'>${userLinks[i]}</a></li>`
 
     }

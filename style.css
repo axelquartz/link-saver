@@ -1,0 +1,50 @@
+main{
+    display: flex;
+    flex-direction: column;
+}
+body{
+    margin: 20px 0;
+}
+/*Input*/
+#input-container{
+    max-width: 500px;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    align-items: center;
+}
+#input-el{
+    width: 400px;
+    padding: 5px;
+    box-sizing: content-box;
+    margin: 5px 0;
+
+
+}
+#btn-el{
+    box-sizing: content-box;
+    width: 400px;
+    padding: 5px;
+    margin: 5px 0;
+}
+
+/*Display links*/
+#display-links{
+    max-width: 500px;
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    background-color: aliceblue;
+    align-items: flex-start;    
+}
+a{
+    text-decoration: none;
+}
+li{
+    list-style: none;
+    margin: 10px 0;
+    padding: 5px;
+    background-color: antiquewhite;
+    max-width: 500px;
+    min-width: 400px;}
