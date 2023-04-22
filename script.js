@@ -5,6 +5,8 @@ let ulEl = document.getElementById('ul-el');
 
 let userLinks = [];
 
+//LocalStorage
+
 function pushLink() {
     userLinks.push(inputEl.value);
 

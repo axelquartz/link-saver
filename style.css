@@ -4,6 +4,7 @@ main{
 }
 body{
     margin: 20px 0;
+    padding: 20px;
 }
 h1{
     font-family: 'Kanit', sans-serif;
@@ -65,15 +66,25 @@ a{
 a:link{
     color: #3880ce;
 }
+ul{
+    font-family: 'Kanit', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    max-width: 500px;
+    min-width: 400px;
+    text-align: center;
+    padding: 0;
+    margin: 5px auto;
+
+}
 li{
     font-family: 'Kanit', sans-serif;
     font-size: 14px;
     font-weight: 300;
     box-sizing: content-box;
     list-style: none;
-    margin: 10px 0;
-    padding: 8px;
     background-color: rgb(243, 243, 243);
-    max-width: 500px;
-    min-width: 400px;
+    width: 400px;
+    height: 25px;
+    padding: 7px;
 }
