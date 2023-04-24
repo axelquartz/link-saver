@@ -5,7 +5,33 @@ let ulEl = document.getElementById('ul-el');
 
 let userLinks = [];
 
+function getLocalStorage() {
+    
+    let linksFromLocalStorage = localStorage.getItem('userLinks') 
+    linksFromLocalStorage = JSON.parse(linksFromLocalStorage)
 
+    console.log(linksFromLocalStorage.length);
+
+    let linkToDisplay = '';
+
+    for (let i = 0; i < linksFromLocalStorage.length; i++) {
+        //Display localStorage elements on DOM
+        //assign list HTML element to variable
+        linkToDisplay += `<li><a href='${linksFromLocalStorage[i]}' target='_blank'>${linksFromLocalStorage[i]}</a></li>`
+    }
+    //Push linksFromLocalStorage to usrLinks array
+    userLinks = linksFromLocalStorage
+
+    ulEl.innerHTML = linkToDisplay
+    linksFromLocalStorage = JSON.stringify(linksFromLocalStorage)
+    
+    console.log(linksFromLocalStorage);
+    console.log(localStorage.getItem('userLinks'));
+
+
+}
+
+window.onload = getLocalStorage;
 
 function pushLink() {
     userLinks.push(inputEl.value);
@@ -17,14 +43,14 @@ function pushLink() {
     inputEl.value = ''
 
     //LocalStorage
-    //Save userLinks array to localStorage
-    userLinks = JSON.stringify(userLinks)
 
     //Save userLinks to localStorage
-    localStorage.setItem('userLinks', userLinks)
+    localStorage.setItem('userLinks', JSON.stringify(userLinks))
 
     //Convert userLinks to array
-    userLinks = JSON.parse(userLinks)
+    // userLinks = JSON.parse(userLinks)
+
+    console.log(localStorage.getItem('userLinks'));
 }
 
 function displayLink() {
@@ -41,3 +67,4 @@ function displayLink() {
 }
 
 btnEl.addEventListener('click', pushLink)
+
