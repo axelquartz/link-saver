@@ -68,3 +68,10 @@ function displayLink() {
 
 btnEl.addEventListener('click', pushLink)
 
+//Add link when pressing "enter" key
+document.addEventListener('keypress', function(e) {
+    if(e.key === 'Enter' && inputEl.value !== ''){
+        pushLink()
+    }
+})
+
