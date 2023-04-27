@@ -1,6 +1,7 @@
 //Connect DOM elements to interact with
 const inputEl = document.getElementById('input-el');
 const btnEl = document.getElementById('btn-el');
+const deleteBtnEl = document.getElementById('delete-btn-el');
 let ulEl = document.getElementById('ul-el');
 
 let userLinks = [];
@@ -9,9 +10,7 @@ function getLocalStorage() {
     
     let linksFromLocalStorage = localStorage.getItem('userLinks') 
     linksFromLocalStorage = JSON.parse(linksFromLocalStorage)
-
     console.log(linksFromLocalStorage.length);
-
     let linkToDisplay = '';
 
     for (let i = 0; i < linksFromLocalStorage.length; i++) {
@@ -34,36 +33,38 @@ function getLocalStorage() {
 window.onload = getLocalStorage;
 
 function pushLink() {
-    userLinks.push(inputEl.value);
+    if (true){
+        userLinks.push(inputEl.value);
+        //Display the link
+        displayLink()
+        //input to empty
+        inputEl.value = ''
+        //LocalStorage
+        //Save userLinks to localStorage
+        localStorage.setItem('userLinks', JSON.stringify(userLinks))
+    
+        //Convert userLinks to array
+        // userLinks = JSON.parse(userLinks)
+    
+        console.log(localStorage.getItem('userLinks'));
+    }
 
-    //Display the link
-    displayLink()
-
-    //input to empty
-    inputEl.value = ''
-
-    //LocalStorage
-
-    //Save userLinks to localStorage
-    localStorage.setItem('userLinks', JSON.stringify(userLinks))
-
-    //Convert userLinks to array
-    // userLinks = JSON.parse(userLinks)
-
-    console.log(localStorage.getItem('userLinks'));
 }
 
 function displayLink() {
     let linkToDisplay = '';
     for (i=0 ; i<userLinks.length ; i++) {
-
-
         //assign list HTML element to variable
         linkToDisplay += `<li><a href='${userLinks[i]}' target='_blank'>${userLinks[i]}</a></li>`
-
     }
     ulEl.innerHTML = linkToDisplay
     console.log(linkToDisplay);
+}
+
+function deleteAll() {
+    localStorage.clear()
+    ulEl.innerHTML = ''
+    userLinks = []
 }
 
 btnEl.addEventListener('click', pushLink)
@@ -74,4 +75,5 @@ document.addEventListener('keypress', function(e) {
         pushLink()
     }
 })
+deleteBtnEl.addEventListener('click', deleteAll)
 

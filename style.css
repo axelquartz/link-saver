@@ -37,7 +37,7 @@ p{
     border: solid 2px #063970;
 
 }
-#btn-el{
+#btn-el, #delete-btn-el{
     font-family: 'Kanit', sans-serif;
     font-weight: 600;
     color: #FFFFFF;
@@ -50,6 +50,62 @@ p{
     background-color: #063970;
     border: solid 2px #063970;
 
+}
+#btn-el:hover{
+    font-family: 'Kanit', sans-serif;
+    font-weight: 600;
+    color: #FFFFFF;
+    box-sizing: content-box;
+    width: 400px;
+    height: 25px;
+    padding: 5px;
+    margin: 5px 0;
+    border: none;
+    background-color: #2368b3;
+    border: solid 2px #2368b3;
+}
+#btn-el:active{
+    font-family: 'Kanit', sans-serif;
+    font-weight: 600;
+    color: #FFFFFF;
+    box-sizing: content-box;
+    width: 400px;
+    height: 25px;
+    padding: 5px;
+    margin: 5px 0;
+    border: none;
+    background-color: #84c0ff;
+    border: solid 2px #84c0ff;
+}
+#delete-btn-el{
+    background-color: rgb(255, 75, 55);
+    border: solid 2px rgb(255, 75, 55);
+}
+#delete-btn-el:hover{
+    font-family: 'Kanit', sans-serif;
+    font-weight: 600;
+    color: #FFFFFF;
+    box-sizing: content-box;
+    width: 400px;
+    height: 25px;
+    padding: 5px;
+    margin: 5px 0;
+    border: none;
+    background-color: rgb(255, 125, 110);
+    border: solid 2px rgb(255, 125, 110);
+}
+#delete-btn-el:active{
+    font-family: 'Kanit', sans-serif;
+    font-weight: 600;
+    color: #FFFFFF;
+    box-sizing: content-box;
+    width: 400px;
+    height: 25px;
+    padding: 5px;
+    margin: 5px 0;
+    border: none;
+    background-color: rgb(255, 170, 160);
+    border: solid 2px rgb(255, 170, 160);
 }
 
 /*Display links*/
