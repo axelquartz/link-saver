@@ -6,7 +6,7 @@ let ulEl = document.getElementById('ul-el');
 
 let userLinks = [];
 
-function getLocalStorage() {
+function getLocalStorage(links) {
     
     let linksFromLocalStorage = localStorage.getItem('userLinks') 
     linksFromLocalStorage = JSON.parse(linksFromLocalStorage)
@@ -19,34 +19,36 @@ function getLocalStorage() {
         linkToDisplay += `<li><a href='${linksFromLocalStorage[i]}' target='_blank'>${linksFromLocalStorage[i]}</a></li>`
     }
     //Push linksFromLocalStorage to usrLinks array
-    userLinks = linksFromLocalStorage
+    links = linksFromLocalStorage
     ulEl.innerHTML = linkToDisplay
     linksFromLocalStorage = JSON.stringify(linksFromLocalStorage)
     console.log(linksFromLocalStorage);
     console.log(localStorage.getItem('userLinks'));
 }
 
-window.onload = getLocalStorage;
+window.onload = function (){
+    getLocalStorage(userLinks);
+}
 
-function pushLink() {
-        userLinks.push(inputEl.value);
+function pushLink(links) {
+        links.push(inputEl.value);
         //Display the link
-        displayLink()
+        displayLink(userLinks)
         //input to empty
         inputEl.value = ''
         //LocalStorage
         //Save userLinks to localStorage
-        localStorage.setItem('userLinks', JSON.stringify(userLinks))
+        localStorage.setItem('userLinks', JSON.stringify(links))
         //Convert userLinks to array
         // userLinks = JSON.parse(userLinks)
         console.log(localStorage.getItem('userLinks'));
     }
 
-function displayLink() {
+function displayLink(links) {
     let linkToDisplay = '';
-    for (i=0 ; i<userLinks.length ; i++) {
+    for (i=0 ; i<links.length ; i++) {
         //assign list HTML element to variable
-        linkToDisplay += `<li><a href='${userLinks[i]}' target='_blank'>${userLinks[i]}</a></li>`
+        linkToDisplay += `<li><a href='${links[i]}' target='_blank'>${links[i]}</a></li>`
     }
     ulEl.innerHTML = linkToDisplay
     console.log(linkToDisplay);
@@ -58,13 +60,17 @@ function deleteAll() {
     userLinks = []
 }
 
-btnEl.addEventListener('click', pushLink)
+btnEl.addEventListener('click', function(){
+    pushLink(userLinks)
+})
 
 //Add link when pressing "enter" key
 document.addEventListener('keypress', function(e) {
     if(e.key === 'Enter' && inputEl.value !== ''){
-        pushLink()
+        pushLink(userLinks)
     }
 })
-deleteBtnEl.addEventListener('dblclick', deleteAll)
+deleteBtnEl.addEventListener('dblclick', function() {
+    deleteAll()
+})
 
