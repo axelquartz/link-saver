@@ -20,20 +20,15 @@ function getLocalStorage() {
     }
     //Push linksFromLocalStorage to usrLinks array
     userLinks = linksFromLocalStorage
-
     ulEl.innerHTML = linkToDisplay
     linksFromLocalStorage = JSON.stringify(linksFromLocalStorage)
-    
     console.log(linksFromLocalStorage);
     console.log(localStorage.getItem('userLinks'));
-
-
 }
 
 window.onload = getLocalStorage;
 
 function pushLink() {
-    if (true){
         userLinks.push(inputEl.value);
         //Display the link
         displayLink()
@@ -42,14 +37,10 @@ function pushLink() {
         //LocalStorage
         //Save userLinks to localStorage
         localStorage.setItem('userLinks', JSON.stringify(userLinks))
-    
         //Convert userLinks to array
         // userLinks = JSON.parse(userLinks)
-    
         console.log(localStorage.getItem('userLinks'));
     }
-
-}
 
 function displayLink() {
     let linkToDisplay = '';
@@ -75,5 +66,5 @@ document.addEventListener('keypress', function(e) {
         pushLink()
     }
 })
-deleteBtnEl.addEventListener('click', deleteAll)
+deleteBtnEl.addEventListener('dblclick', deleteAll)
 
