@@ -2,11 +2,11 @@
 const inputEl = document.getElementById('input-el');
 const btnEl = document.getElementById('btn-el');
 const deleteBtnEl = document.getElementById('delete-btn-el');
+const saveTabBtnEl = document.getElementById('save-tab-btn-el');
 let ulEl = document.getElementById('ul-el');
-
 let userLinks = [];
 
-function getLocalStorage(links) {
+function getLocalStorage() {
     
     let linksFromLocalStorage = localStorage.getItem('userLinks') 
     linksFromLocalStorage = JSON.parse(linksFromLocalStorage)
@@ -19,7 +19,7 @@ function getLocalStorage(links) {
         linkToDisplay += `<li><a href='${linksFromLocalStorage[i]}' target='_blank'>${linksFromLocalStorage[i]}</a></li>`
     }
     //Push linksFromLocalStorage to usrLinks array
-    links = linksFromLocalStorage
+    userLinks = linksFromLocalStorage
     ulEl.innerHTML = linkToDisplay
     linksFromLocalStorage = JSON.stringify(linksFromLocalStorage)
     console.log(linksFromLocalStorage);
@@ -27,49 +27,62 @@ function getLocalStorage(links) {
 }
 
 window.onload = function (){
-    getLocalStorage(userLinks);
+    getLocalStorage();
 }
 
-function pushLink(links) {
-        links.push(inputEl.value);
+function pushLink() {
+    userLinks.push(inputEl.value);
         //Display the link
         displayLink(userLinks)
         //input to empty
         inputEl.value = ''
         //LocalStorage
         //Save userLinks to localStorage
-        localStorage.setItem('userLinks', JSON.stringify(links))
+        localStorage.setItem('userLinks', JSON.stringify(userLinks))
         //Convert userLinks to array
         // userLinks = JSON.parse(userLinks)
         console.log(localStorage.getItem('userLinks'));
     }
 
-function displayLink(links) {
+function displayLink() {
     let linkToDisplay = '';
-    for (i=0 ; i<links.length ; i++) {
+    for (i=0 ; i<userLinks.length ; i++) {
         //assign list HTML element to variable
-        linkToDisplay += `<li><a href='${links[i]}' target='_blank'>${links[i]}</a></li>`
+        linkToDisplay += `<li><a href='${userLinks[i]}' target='_blank'>${userLinks[i]}</a></li>`
     }
     ulEl.innerHTML = linkToDisplay
     console.log(linkToDisplay);
+}
+
+function saveTab() {
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        console.log(tabs)
+        userLinks.push(tabs[0].url)
+        localStorage.setItem('userLinks', JSON.stringify(userLinks))
+        getLocalStorage()
+
+    })
+
 }
 
 function deleteAll() {
     localStorage.clear()
     ulEl.innerHTML = ''
     userLinks = []
+    tabs=[]
 }
 
 btnEl.addEventListener('click', function(){
-    pushLink(userLinks)
+    pushLink()
 })
 
 //Add link when pressing "enter" key
 document.addEventListener('keypress', function(e) {
     if(e.key === 'Enter' && inputEl.value !== ''){
-        pushLink(userLinks)
+        pushLink()
     }
 })
+saveTabBtnEl.addEventListener('click', saveTab)
 deleteBtnEl.addEventListener('dblclick', function() {
     deleteAll()
 })

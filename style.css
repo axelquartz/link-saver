@@ -37,7 +37,7 @@ p{
     border: solid 2px #063970;
 
 }
-#btn-el, #delete-btn-el{
+#btn-el, #delete-btn-el, #save-tab-btn-el{
     font-family: 'Kanit', sans-serif;
     font-weight: 600;
     color: #FFFFFF;
@@ -76,6 +76,36 @@ p{
     border: none;
     background-color: #84c0ff;
     border: solid 2px #84c0ff;
+}
+#save-tab-btn-el{
+    background-color: #6fb5ff;
+    border: solid 2px #6fb5ff;
+}
+#save-tab-btn-el:hover{
+    font-family: 'Kanit', sans-serif;
+    font-weight: 600;
+    color: #FFFFFF;
+    box-sizing: content-box;
+    width: 400px;
+    height: 25px;
+    padding: 5px;
+    margin: 5px 0;
+    border: none;
+    background-color: #9acbff;
+    border: solid 2px #9acbff;
+}
+#save-tab-btn-el:active{
+    font-family: 'Kanit', sans-serif;
+    font-weight: 600;
+    color: #FFFFFF;
+    box-sizing: content-box;
+    width: 400px;
+    height: 25px;
+    padding: 5px;
+    margin: 5px 0;
+    border: none;
+    background-color: #78b9ff;
+    border: solid 2px #78b9ff;
 }
 #delete-btn-el{
     background-color: rgb(255, 75, 55);
